@@ -9,5 +9,5 @@ object RetrofitConfig {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service = retrofit.create(Service::class.java)
+    val service: Service = retrofit.create(Service::class.java)
 }

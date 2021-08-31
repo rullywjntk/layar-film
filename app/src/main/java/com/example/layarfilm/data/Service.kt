@@ -6,9 +6,9 @@ import retrofit2.http.Path
 
 interface Service {
 
-    @GET("newupload")
+    @GET("https://api-lk21.herokuapp.com/newupload")
     fun getUpload(
-        @Path("newupload") newupload: String
+        @Path("result") newUpload: String
     ):Call<NewUploadList>
 
 }

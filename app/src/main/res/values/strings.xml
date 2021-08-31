@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Layar Film</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="name">Name</string>
+    <string name="search">Search</string>
+    <string name="new_upload">New Upload</string>
+    <string name="title">Title</string>
+    <string name="duration">Duration</string>
 </resources>

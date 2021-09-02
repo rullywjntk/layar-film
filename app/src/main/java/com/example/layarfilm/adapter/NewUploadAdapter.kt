@@ -2,22 +2,29 @@ package com.example.layarfilm.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.layarfilm.data.NewUpload
 import com.example.layarfilm.databinding.ItemMovieBinding
 
-class NewUploadAdapter : RecyclerView.Adapter<NewUploadAdapter.ViewHolder>() {
+class NewUploadAdapter: RecyclerView.Adapter<NewUploadAdapter.ViewHolder>() {
 
-    private val mData = ArrayList<NewUpload>()
+    private var list = mutableListOf<NewUpload>()
 
-    fun setData(items: ArrayList<NewUpload>) {
-        mData.clear()
-        mData.addAll(items)
+    fun setMovie(movie: ArrayList<NewUpload>) {
+        this.list = movie.toMutableList()
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+//    fun setData(items: ArrayList<NewUpload>) {
+//        mData.clear()
+//        mData.addAll(items)
+//        notifyDataSetChanged()
+//    }
+
+    inner class ViewHolder(private val binding: ItemMovieBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: NewUpload) {
             binding.apply {
                 tvTitle.text = movie.title
@@ -36,8 +43,8 @@ class NewUploadAdapter : RecyclerView.Adapter<NewUploadAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(mData[position])
+        holder.bind(list[position])
     }
 
-    override fun getItemCount(): Int = mData.size
+    override fun getItemCount(): Int = list.size
 }

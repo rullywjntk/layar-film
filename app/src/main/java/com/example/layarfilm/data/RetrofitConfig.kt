@@ -4,10 +4,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitConfig {
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api-lk21.herokuapp.com/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private const val baseUrl = "https://api-lk21.herokuapp.com/"
 
-    val service: Service = retrofit.create(Service::class.java)
+    val instance: Api by lazy {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        retrofit.create(Api::class.java)
+    }
 }
